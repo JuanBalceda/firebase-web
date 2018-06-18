@@ -1,7 +1,7 @@
 var btnLogin = document.getElementById("btnLogin")
 var btnLogout = document.getElementById("btnLogout")
 
-firebase.auth().onAuthStateChanged(function(user){
+firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
     console.log("Tenemos usuario")
     btnLogin.style.display = "none";
@@ -13,23 +13,32 @@ firebase.auth().onAuthStateChanged(function(user){
   }
 });
 
-btnLogin.addEventListener("click",function(){
+btnLogin.addEventListener("click", function () {
   event.preventDefault();
-  
-  var provider = new firebase.auth.GoogleAuthProvider();
-  provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
-  
+  /*
+    //Google Login
+    var provider = new firebase.auth.GoogleAuthProvider();
+    provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+  */
+  /*
+    //Facebook Login
+    var provider = new firebase.auth.FacebookAuthProvider();
+    provider.addScope('public_profile');
+  */
+  //Twitter Login
+  var provider = new firebase.auth.TwitterAuthProvider();
+
   firebase.auth().signInWithPopup(provider)
-  .then(function(datosUsuario){
-    console.log(datosUsuario)
-  }).catch(function(err){
-    console.log(err)
-  })
+    .then(function (datosUsuario) {
+      console.log(datosUsuario)
+    }).catch(function (err) {
+      console.log(err)
+    })
 });
 
-btnLogout.addEventListener("click",function(){
+btnLogout.addEventListener("click", function () {
   firebase.auth().signOut()
-  .catch(function(err){
-    console.log(err)
-  });
+    .catch(function (err) {
+      console.log(err)
+    });
 });

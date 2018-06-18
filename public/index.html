@@ -126,47 +126,6 @@
       </form>
     </div>
   </footer>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.8.2/blazy.min.js"></script>
-  <script>
-    var consulta = window.matchMedia('(max-width: 500px)')
-    var $burgerButton = document.getElementById('burger-button')
-    var $menu = document.getElementById('menu')
-    consulta.addListener(mediaQuery)
-    mediaQuery()
-
-    function toggleMenu() {
-      $menu.classList.toggle('active')
-    }
-
-    function mediaQuery() {
-      if (consulta.matches) {
-        $burgerButton.addEventListener('touchstart', toggleMenu);
-      } else {
-        $burgerButton.removeEventListener('touchstart', toggleMenu);
-      }
-    }
-
-    //lazy loading
-    var bLazy = new Blazy({
-      selector: 'img'
-    });
-
-    // Gestures
-    var $body = document.body;
-    var Gestures = new Hammer($body);
-
-    Gestures.on('swipeleft', hideMenu);
-    Gestures.on('swiperight', showMenu);
-
-    function showMenu() {
-      $menu.classList.add('active')
-    }
-
-    function hideMenu() {
-      $menu.classList.remove('active')
-    }
-  </script>
   <!--Inicio de Firebase-->
   <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-auth.js"></script>

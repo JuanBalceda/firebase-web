@@ -1,0 +1,44 @@
+[debug] [2018-06-18T18:58:43.843Z] ----------------------------------------------------------------------
+[debug] [2018-06-18T18:58:43.847Z] Command:       /usr/bin/node /usr/bin/firebase serve
+[debug] [2018-06-18T18:58:43.847Z] CLI Version:   3.18.6
+[debug] [2018-06-18T18:58:43.847Z] Platform:      linux
+[debug] [2018-06-18T18:58:43.848Z] Node Version:  v10.4.1
+[debug] [2018-06-18T18:58:44.234Z] Time:          Mon Jun 18 2018 19:58:43 GMT+0100 (GMT+01:00)
+[debug] [2018-06-18T18:58:44.234Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-06-18T18:58:44.254Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-06-18T18:58:44.254Z] > authorizing via signed-in user
+[debug] [2018-06-18T18:58:44.257Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-06-18T18:58:44.257Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token:
+   '1/vPoYdDSkRon-PvQNXV3Qp5CZayxz5KIWgnvhT9ymkRxCgrr1KWdRyG1O1SFf5jKR',
+  client_id:
+   '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope:
+   'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Mon Jun 18 2018 19:58:44 GMT+0100 (GMT+01:00)
+[debug] [2018-06-18T18:58:44.479Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-18T18:58:44.557Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/platzi-invi  
+  
+ Mon Jun 18 2018 19:58:44 GMT+0100 (GMT+01:00)
+[debug] [2018-06-18T18:58:45.285Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-18T18:58:45.288Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/platzi-invi/tokens  
+  
+ Mon Jun 18 2018 19:58:45 GMT+0100 (GMT+01:00)
+[debug] [2018-06-18T18:58:46.062Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-18T18:58:46.063Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/platzi-invi  
+  
+ Mon Jun 18 2018 19:58:46 GMT+0100 (GMT+01:00)
+[debug] [2018-06-18T18:58:46.871Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/mnt/c/webapps/invie'...
+[info] 
+[debug] [2018-06-18T18:58:46.876Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/209669395748/clients/_:getWebAppConfig  
+  
+ Mon Jun 18 2018 19:58:46 GMT+0100 (GMT+01:00)
+[debug] [2018-06-18T18:58:47.392Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5000
+

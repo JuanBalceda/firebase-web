@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "platzi-invi",
+    "platzi-firebase-web": "platzi-invi"
+  }
+}

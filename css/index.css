@@ -1,0 +1,536 @@
+@font-face {
+    font-family: 'icomoon';
+    src:  url('../fonts/icomoon.eot?5jrugc');
+    src:  url('../fonts/icomoon.eot?5jrugc#iefix') format('embedded-opentype'),
+      url('../fonts/icomoon.ttf?5jrugc') format('truetype'),
+      url('../fonts/icomoon.woff?5jrugc') format('woff'),
+      url('../fonts/icomoon.svg?5jrugc#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  [class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+  
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .icon-phone:before {
+    content: "\e942";
+  }
+  .icon-envelop:before {
+    content: "\e945";
+  }
+  .icon-menu:before {
+    content: "\e9bd";
+  }
+  .icon-close:before {
+    content: "\ea0d";
+  }
+
+.header {
+    position: relative;
+}
+
+body {
+    font-family: 'Allerta', sans-serif;
+    margin: 0;
+}
+
+input, textarea {
+    outline: none;
+}
+
+input:focus, textarea:focus {
+    background: lightgray;
+}
+
+table {
+    width: 100%;
+}
+
+th {
+    background: #273b47;
+    color: white;
+    padding: 10px 20px;
+    text-align: left;
+}
+
+td {
+    padding: 20px;
+}
+
+table, td, th {
+    border: 1px solid #273b47;
+    border-collapse: collapse;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    position: relative;
+}
+
+.background {
+    background-color: #466173;
+    background-image: url('../assets/background.png');
+    background-size: cover;
+}
+
+.menu {
+    font-size: 24px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+}
+
+.menu li {
+    display: inline-block;
+    margin-left: 30px;
+}
+
+.menu li:before {
+    content: '⤷';
+    line-height: 20px;
+    color: white;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+}
+
+.logotype {
+    display: inline-block;
+    margin-left: 0;
+}
+
+.front {
+    color: white;
+    padding: 20px;
+    height: 500px;
+}
+
+.button {
+    border-radius: 12px;
+    background: #fd324e;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 18px;
+    background: linear-gradient(to left, #fe344e, #ff7250);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.front button {
+    margin-bottom: 70px;
+}
+
+.title {
+    font-size: 70px;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 0;
+    margin-top: 70px;
+}
+.title span {
+    text-decoration: underline;
+}
+
+.title-a {
+    font-size: 24px;
+    margin-top: 0;
+}
+
+.title-b {
+    font-size: 50px;margin-bottom: 20px;
+}
+
+.guitars {
+    color: #1f313c;
+    margin-bottom: 60px;
+}
+
+.guitars h2 {
+    font-size: 35px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+
+.guitar {
+    margin: 10px 10px 40px 10px;
+    padding: 10px;
+    border: 1px solid #1f313c;
+    border-radius: 8px;
+}
+
+.guitar.b {
+height: 190px;
+}
+
+.right {
+    float: right;
+    position: relative;
+    top: -127px;
+}
+
+.left {
+    float: left;
+    position: relative;
+}
+
+.guitar-container-a {
+    padding-left: 20px;
+}
+
+.guitar-container-b {
+    margin-left: 360px;
+    position: relative;
+    bottom: 90px;
+}
+
+.footer {
+    background: #273b47;
+    
+}
+
+.form {
+    display: flex;
+    width: 400px;
+    color: white;
+    padding-top: 40px;
+    padding-bottom: 10px;
+}
+
+.contact {
+    display: flex;
+    width: 300px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.contact img {
+    display: block;
+}
+
+.contact strong {
+    display: block;
+}
+
+.contact a {
+    color: white;
+    text-decoration: none;
+    margin: 8px 8px 8px 0;
+}
+
+.footer .container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.col1, .col2 {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.col1 {
+    margin-right: 15px;
+}
+
+.col2 {
+    align-items: flex-start;
+}
+.col2 .button {
+    margin-top: 15px;
+}
+
+.interest label {
+    font-size: 14px;
+} 
+
+.form label, .sex, .interest {
+    margin-bottom: 12px;
+}
+
+.sex {
+    margin-top: 12px;
+}
+
+.table {
+    margin: 50px 0;
+  }
+
+.burger-button {
+    width: 40px;
+    border-radius: 50%;
+    height: 40px;
+    line-height: 40px;
+    background: #395667;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    position: fixed;
+    left: 20px;
+    top: 20px;
+    z-index: 3;
+    color: white;
+    display: none;
+}
+
+@media screen and (max-width: 800px) {
+    /* Precios */
+    .table {
+        margin: 50px 20px;
+    }
+
+    .table .container {
+        overflow: auto;
+        border: 1px solid #273b47;
+    }
+
+    /* Precios */
+
+    /* Portada */
+    .title {
+        font-size: 45px;
+        margin-top: 30px;
+    }
+    .title-a {
+        font-size: 18px;
+    }
+    .front{
+        height: auto;
+    }
+    .front .button {
+        margin-bottom: 30px;
+        display: inline-block;
+    }
+    /* Portada */
+
+    /* Guitarras */
+    
+    .guitars {
+        text-align: center;
+    }
+    
+    .left, .right {
+        float: none;
+        position: static;
+    }
+
+    .title-b {
+        margin: 0;
+    }
+
+    .guitars li {
+        list-style: none;
+    }
+
+    .guitar.b {
+        height: auto;
+    }
+
+    .guitar-container-b {
+        position: static;
+        margin: 0;
+    }
+
+    .guitar-container-a {
+        padding: 0;
+    }
+
+    .contact {
+        margin-left: 10px;
+    }
+
+    .form {
+        margin-right: 10px;
+    }
+    /* Guitarras */
+
+    @media screen and (max-width: 767px) {
+        /* Footer */
+        .footer .container {
+            display: block;
+        }
+
+        .contact {
+            margin: 0 auto;
+        }
+
+        .form {
+            display: block;
+            margin: 0 auto;
+            width: 300px;
+        }
+        .interest label {
+            display: block;
+            font-size: 16px;
+        }
+
+        .col1 {
+            margin: 0;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            font-size: 16;
+            padding: 8px;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            zoom: 1.5;
+        }
+
+        textarea {
+            width: 100%;
+        }
+
+        /* Footer */
+    }
+    
+}
+
+@media screen and (max-width: 610px) {
+    .header{
+        text-align: center;
+    }
+
+    .logotype {
+        margin: 0;
+    }
+
+    .menu {
+        position: static;
+        display: block;
+        
+    }
+
+    .menu li:first-child {
+        margin: 0;
+    }
+
+    .menu ul {
+        padding: 0;
+    }
+
+    
+}
+
+@media screen and (max-width: 500px) {
+
+    /* Portada */
+.burger-button {
+    display: inline-block;
+}
+
+.prices .header .logotype {
+    margin: 50px 0;
+}
+
+.front .button {
+    display: block;
+}
+
+.front .container {
+    position: static;
+}
+.header {
+    position: static;
+}
+
+.header .container {
+    position: static;
+}
+
+.menu {
+    background: rgba(255, 60, 88, .8);
+    position: fixed;
+    left: -100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    transition: .3s;
+    }
+
+    .menu.active {
+        left: 0;
+    }
+
+    .menu ul {
+        flex: 1;
+    }
+
+    .front {
+        text-align: center;
+    }
+
+   .menu li {
+    display: block;
+    margin: 0;
+    padding: 10px 0;
+    border-bottom: 1px solid white;
+   } 
+
+   .menu li:first-child {
+       border-top: 1px solid white;
+   }
+
+   .menu li::before {
+       display: none;
+   }
+
+   .title {
+       font-size: 30px;
+   }
+
+   .title-a {
+       font-size: 16px;
+   }
+
+   /* Portada */
+
+   /* Guitarras */
+
+   .guitar img {
+    width: 200px;
+    height: auto;
+   }
+   
+
+   .title-b {
+       font-size: 30px;
+   }
+
+   /* Guitarras */
+
+   /* Footer */
+
+   .col2 {
+    align-items: stretch;
+}
+
+   /* Footer */
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+    .background {
+        background-image: url('../assets/background2x.png');
+    }
+}

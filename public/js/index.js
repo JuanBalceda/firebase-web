@@ -20,14 +20,14 @@ btnLogin.addEventListener("click", function () {
     var provider = new firebase.auth.GoogleAuthProvider();
     provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
   */
-  /*
+  
     //Facebook Login
     var provider = new firebase.auth.FacebookAuthProvider();
     provider.addScope('public_profile');
-  */
+  /*
   //Twitter Login
   var provider = new firebase.auth.TwitterAuthProvider();
-
+  */
   firebase.auth().signInWithPopup(provider)
     .then(function (datosUsuario) {
       console.log(datosUsuario)

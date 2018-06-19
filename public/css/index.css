@@ -98,12 +98,6 @@ table, td, th {
     margin-left: 30px;
 }
 
-.menu li:before {
-    content: '⤷';
-    line-height: 20px;
-    color: white;
-}
-
 .menu a {
     color: white;
     text-decoration: none;

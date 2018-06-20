@@ -1,34 +1,49 @@
 var ref = firebase.database().ref("usuario");
 var refGuitarra = firebase.database().ref("guitarra");
+var refImg = firebase.storage().ref();
 
 var btnLogin = document.getElementById("btnLogin")
 var btnLogout = document.getElementById("btnLogout")
 
+
+var guitarraDemoA = document.getElementById("guitarraDemoA")
+var guitarraDemoB = document.getElementById("guitarraDemoB")
+
 var perfilNav = document.getElementById("perfilNav")
 
-var usuario
+var usuarioLogin = {}
 
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
-    btnLogin.style.display = "none";
-    btnLogout.style.display = "block";
+    btnLogin.style.display = "none"
+    btnLogout.style.display = "block"
 
-    perfilNav.style.display = "block";
+    perfilNav.style.display = "block"
+
+    guitarraDemoA.style.display = "none"
+    guitarraDemoB.style.display = "none"
+
+    usuarioLogin = user
+    leerGuitarrasNormales()
+    leerGuitarrasVIP()
   } else {
-    btnLogout.style.display = "none";
-    btnLogin.style.display = "block";
+    btnLogout.style.display = "none"
+    btnLogin.style.display = "block"
 
-    perfilNav.style.display = "none";
+    perfilNav.style.display = "none"
+
+    guitarraDemoA.style.display = "block"
+    guitarraDemoB.style.display = "block"
   }
 });
 
 btnLogin.addEventListener("click", function () {
   event.preventDefault();
-  
-    //Google Login
-    var provider = new firebase.auth.GoogleAuthProvider();
-    provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
-  
+
+  //Google Login
+  var provider = new firebase.auth.GoogleAuthProvider();
+  provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+
   /*
   //Facebook Login
   var provider = new firebase.auth.FacebookAuthProvider();
@@ -54,19 +69,71 @@ btnLogin.addEventListener("click", function () {
 
 function agregarUsuario(usuario, uid) {
   ref.child(uid).update(usuario)
-
 };
 
 btnLogout.addEventListener("click", function () {
   event.preventDefault();
-  firebase.auth().signOut()
+  firebase.auth().signOut().then(function () {
+      window.location.href = "index.html"
+    })
     .catch(function (err) {
       //console.log(err)
     });
 });
 
-function leerGuitarras(){
-  refGuitarra.on("value", function(guitarras){
-    console.log(guitarras.val())
+function leerGuitarrasNormales() {
+  refGuitarra.child("normal").on("child_added", function (datos) {
+    var guitar = datos.val()
+    var contenedorElementos = document.getElementById("guitarraNormal")
+    contenedorElementos.insertBefore(
+      crearElementoGuitarra(datos.key, guitar.nombre, guitar.precio, guitar.descripcion, guitar.img),
+      contenedorElementos.firstChild
+    )
   })
+}
+
+function leerGuitarrasVIP() {
+  refGuitarra.child("vip").on("child_added", function (datos) {
+    var guitar = datos.val()
+    var contenedorElementos = document.getElementById("guitarraVIP")
+    contenedorElementos.insertBefore(
+      crearElementoGuitarra(datos.key, guitar.nombre, guitar.precio, guitar.descripcion, guitar.img),
+      contenedorElementos.firstChild
+    )
+  })
+}
+
+function crearElementoGuitarra(clave, nombre, precio, descripcion, img) {
+  var uid = usuarioLogin.uid;
+
+  var html =
+    '<article class="guitarra contenedor">' +
+    '<img class="derechaa" src="" alt="Guitarra invie acustica" width="150" />' +
+    '<div class="contenedor-guitarra-a">' +
+    '<h3 class="title-b"></h3>' +
+    '<ol>' +
+    '<li class="precio-b"></li>' +
+    '<li class="descripcion-b"></li>' +
+    '</ol>' +
+    '</div>' +
+    '<button type="button" onclick="comprar(' + '`' + clave + '`' + ')">Comprar</button>' +
+    '</article>'
+
+  //Crear elemento para el html
+  var div = document.createElement('div')
+  div.innerHTML = html
+  var guitarElement = div.firstChild
+  var imgURL = ""
+  refImg.child(img).getDownloadURL().then(function (url) {
+    imgURL = url
+  }).then(function () {
+    guitarElement.getElementsByClassName('title-b')[0].innerText = nombre
+    guitarElement.getElementsByClassName('precio-b')[0].innerText = "$ " + precio
+    guitarElement.getElementsByClassName('descripcion-b')[0].innerText = descripcion
+    guitarElement.getElementsByClassName('derechaa')[0].src = imgURL
+  }).catch(function (err) {
+    console.log(err)
+  })
+  return guitarElement;
+
 }

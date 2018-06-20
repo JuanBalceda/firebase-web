@@ -50,15 +50,7 @@
     <!-- guitarras -->
     <h2>Nuestra guitarras</h2>
     <!-- titulo -->
-    <div class="video-demo-contenedor">
-      <div class="video-demo">
-        <div class="video-responsive-contenedor">
-          <iframe class="video-responsive-src" width="560" height="315" src="https://www.youtube.com/embed/R1dW8M4EqYY" frameborder="0"
-            allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-    <article class="guitarra">
+    <article class="guitarra" id="guitarraDemoA">
       <!-- guitarra 1 -->
       <img class="derecha" srcset="assets/invie-acustica.png, assets/invie-acustica2x.png" alt="Guitarra Invie Acustica" width="350"
       />
@@ -71,7 +63,7 @@
         </ol>
       </div>
     </article>
-    <article class="guitarra b">
+    <article class="guitarra b" id="guitarraDemoB">
       <!-- guitarra 2 -->
       <img class="izquierda" srcset="assets/invie-classic.png, assets/invie-classic2x.png" alt="Guitarra Invie Classic" width="350"
       />
@@ -164,6 +156,8 @@
   <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-storage.js"></script>
+
   <script>
     // Initialize Firebase
     var config = {

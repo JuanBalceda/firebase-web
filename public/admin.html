@@ -3,10 +3,10 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Tu perfil</title>
-  <link rel="stylesheet" href="css/index.css">
+  <title>Admin</title>
+
+  <link href="css/index.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="css/invie.css">
-  <link href="https://fonts.googleapis.com/css?family=Allerta|Montserrat:400" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   <link rel="shortcut icon" type="image/png" href="assets/favicon.png" />
 
@@ -27,6 +27,9 @@
             <a href="index.html">Home</a>
           </li>
           <li>
+            <a href="perfil.html" id="perfilNav">Perfil</a>
+          </li>
+          <li>
             <a href="" id="btnLogin">Iniciar Sesion</a>
           </li>
           <li>
@@ -37,61 +40,28 @@
     </div>
   </header>
 
-  <section class="tabla datosPerfil" id="datosPerfil">
-    <div class="contenedor">
-      <h1>Tu Perfil</h1>
-      <label for="perfilNombre">Nombre: </label>
-      <h3 id="perfilNombre"></h3>
-      <label for="perfilEmail">Email: </label>
-      <h3 id="perfilEmail"></h3>
-      <label for="perfilTelefono">Teléfono: </label>
-      <h3 id="perfilTelefono"></h3>
-      <label for="perfilDireccion">Direccion: </label>
-      <h3 id="perfilDireccion"></h3>
-      <button id="perfilEditar">Editar: </button>
-    </div>
-  </section>
-
-  <section class="formularioPerfil" onsubmit="editarDatos()" id="formularioPerfil" style="display:none">
-
-    <div class="contenedor">
-      <h2>Edita tu información</h2>
-      <form action="-.html" name="formPerfil" id="form">
-        <div>
-          <label for="nombreForm">Nombre:</label>
-          <input type="text" id="nombreForm" required="">
-        </div>
-        <div>
-          <label for="emailForm">Email:</label>
-          <input type="text" id="emailForm" required="">
-        </div>
-        <div>
-          <label for="telefonoForm">Teléfono:</label>
-          <input type="text" id="telefonoForm" required="">
-        </div>
-        <div>
-          dirección
-        </div>
-        <div>
-          <label for="calleForm">calle:</label>
-          <input type="text" id="calleForm" required="">
-        </div>
-        <div>
-          <label for="interiorForm">Num. Int.:</label>
-          <input type="text" id="interiorForm" required="">
-        </div>
-        <div>
-          <label for="coloniaForm">colonia:</label>
-          <input type="text" id="coloniaForm" required="">
-        </div>
-        <div>
-          <label for="cpForm">Código postal:</label>
-          <input type="text" id="cpForm" required="">
-        </div>
-        <button type="button" id="cancelForm">cancelar</button>
-        <button type="submit">Guardar</button>
-      </form>
-    </div>
+  <section id="guitarras" class="contenedor">
+    <h2>Nueva guitarra</h2>
+    <form action="" onsubmit="nuevaGuitarra()" id="guitarraForm">
+      <div>
+        <input type="text" id="nombre" placeholder="Nombre" autocomplete="off">
+      </div>
+      <div>
+        <input type="text" id="descripcion" placeholder="descripcion">
+      </div>
+      <div>
+        <input type="text" id="tipo" placeholder="tipo">
+      </div>
+      <div>
+        <input type="text" id="precio" placeholder="precio">
+      </div>
+      <div>
+        <input type="text" id="img" placeholder="img">
+      </div>
+      <div>
+        <button type="submit">Agregar</button>
+      </div>
+    </form>
   </section>
   <footer class="footer">
     <div class="contenedor">
@@ -143,6 +113,7 @@
       </form>
     </div>
   </footer>
+
   <script type="text/javascript">
     WebFontConfig = {
       google: {
@@ -159,7 +130,6 @@
     })();
   </script>
 
-  <!--Inicio de Firebase-->
   <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-database.js"></script>
@@ -175,8 +145,7 @@
     };
     firebase.initializeApp(config);
   </script>
-  <!--Fin de Firebase-->
-  <script src="js/perfil.js"></script>
+  <script src="js/admin.js"></script>
 
 </body>
 

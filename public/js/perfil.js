@@ -1,5 +1,5 @@
 var ref = firebase.database().ref("usuario");
-var loginUser = {} 
+var loginUser = {}
 var usuario = {}
 
 var btnLogin = document.getElementById("btnLogin")
@@ -33,9 +33,9 @@ firebase.auth().onAuthStateChanged(function (user) {
     leerInformacion(user.uid);
     loginUser = user
   } else {
+    window.location.href = "index.html"
     btnLogout.style.display = "none";
     btnLogin.style.display = "block";
-    window.location.href = "index.html"
   }
 });
 
@@ -63,49 +63,60 @@ function leerInformacion(uid) {
 }
 
 function llenarInformación(perfil) {
+  var direccionCompleta
+
   perfilNombre.innerHTML = perfil.nombre
   perfilEmail.innerHTML = perfil.email
-  perfilTelefono.innerHTML = perfil.telefono
-  perfilDireccion.innerHTML = perfil.direccion.calle+" "+perfil.direccion.interior+" "+  perfil.direccion.codigoPostal+" "+perfil.direccion.colonia
+  perfilTelefono.innerHTML = perfil.telefono || '-'
+
+  if (perfil.direccion != null) {
+    direccionCompleta = perfil.direccion.calle + " " + perfil.direccion.interior + " " + perfil.direccion.codigoPostal + " " + perfil.direccion.colonia
+  }
+  perfilDireccion.innerHTML = direccionCompleta || '-'
   usuario = perfil
 }
 
-perfilEditar.addEventListener("click", function(){
+perfilEditar.addEventListener("click", function () {
   datosPerfil.style.display = "none"
   formularioPerfil.style.display = "block"
   nombreForm.value = usuario.nombre
   emailForm.value = usuario.email
-  telefonoForm.value = usuario.telefono
-  calleForm.value = usuario.direccion.calle
-  interiorForm.value = usuario.direccion.interior
-  cpForm.value = usuario.direccion.codigoPostal
-  coloniaForm.value = usuario.direccion.colonia
-  
+  telefonoForm.value = usuario.telefono || ' '
+  if (usuario.direccion != null) {
+    calleForm.value = usuario.direccion.calle || ' '
+    interiorForm.value = usuario.direccion.interior || ' '
+    cpForm.value = usuario.direccion.codigoPostal || ' '
+    coloniaForm.value = usuario.direccion.colonia || ' '
+  }
 })
 
-cancelForm.addEventListener("click", function(){
+cancelForm.addEventListener("click", function () {
   limpiarFormulario()
 })
 
-function limpiarFormulario(){
+function limpiarFormulario() {
   form.reset()
   formularioPerfil.style.display = "none"
   datosPerfil.style.display = "block"
 }
 
-function editarDatos(){
+function editarDatos() {
   event.preventDefault()
   var objeto = {
-    nombre : nombreForm.value, 
-    email : emailForm.value,
-    telefono : telefonoForm.value,
-    direccion:{
-      calle : calleForm.value,
-      interior : interiorForm.value,
-      colonia : coloniaForm.value,
-      codigoPostal : cpForm.value
+    nombre: nombreForm.value,
+    email: emailForm.value,
+    telefono: telefonoForm.value,
+    direccion: {
+      calle: calleForm.value,
+      interior: interiorForm.value,
+      colonia: coloniaForm.value,
+      codigoPostal: cpForm.value
     }
   }
-  ref.child(loginUser.uid).set(objeto)
-  limpiarFormulario()
+  ref.child(loginUser.uid).update(objeto).then(function(){
+    alert("Usuario editado correctamente")
+    limpiarFormulario();
+  }).catch(function(err){
+    console.log(err)
+  })
 }

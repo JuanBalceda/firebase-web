@@ -1,157 +1,111 @@
 var ref = firebase.database().ref("usuario");
-var refTest = firebase.database().ref("test");
+var loginUser = {} 
+var usuario = {}
 
 var btnLogin = document.getElementById("btnLogin")
 var btnLogout = document.getElementById("btnLogout")
 
-var btnPush = document.getElementById("btnPush")
-var btnUpdate = document.getElementById("btnUpdate")
-var btnSet = document.getElementById("btnSet")
-var btnRemove = document.getElementById("btnRemove")
+var perfilNombre = document.getElementById("perfilNombre")
+var perfilEmail = document.getElementById("perfilEmail")
+var perfilTelefono = document.getElementById("perfilTelefono")
+var perfilDireccion = document.getElementById("perfilDireccion")
 
-var usuario
+var perfilEditar = document.getElementById("perfilEditar")
+
+var datosPerfil = document.getElementById("datosPerfil")
+var formularioPerfil = document.getElementById("formularioPerfil")
+var form = document.getElementById("form")
+
+var cancelForm = document.getElementById("cancelForm")
+
+var nombreForm = document.getElementById("nombreForm")
+var emailForm = document.getElementById("emailForm")
+var telefonoForm = document.getElementById("telefonoForm")
+var calleForm = document.getElementById("calleForm")
+var interiorForm = document.getElementById("interiorForm")
+var coloniaForm = document.getElementById("coloniaForm")
+var cpForm = document.getElementById("cpForm")
 
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
-    console.log("Tenemos usuario")
     btnLogin.style.display = "none";
     btnLogout.style.display = "block";
+    leerInformacion(user.uid);
+    loginUser = user
   } else {
-    console.log("No tenemos usuario")
     btnLogout.style.display = "none";
     btnLogin.style.display = "block";
+    window.location.href = "index.html"
   }
-});
-
-btnLogin.addEventListener("click", function () {
-  event.preventDefault();
-  /*
-    //Google Login
-    var provider = new firebase.auth.GoogleAuthProvider();
-    provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
-  */
-
-  //Facebook Login
-  var provider = new firebase.auth.FacebookAuthProvider();
-  provider.addScope('public_profile');
-  /*
-  //Twitter Login
-  var provider = new firebase.auth.TwitterAuthProvider();
-  */
-  firebase.auth().signInWithPopup(provider)
-    .then(function (datosUsuario) {
-      console.log(datosUsuario)
-      usuario = {
-        nombre: datosUsuario.user.displayName,
-        email: datosUsuario.user.email,
-        uid: datosUsuario.user.uid,
-      }
-      agregarUsuario(usuario, usuario.uid);
-    }).catch(function (err) {
-      console.log(err)
-    })
 });
 
 btnLogout.addEventListener("click", function () {
+  event.preventDefault();
   firebase.auth().signOut()
     .catch(function (err) {
-      console.log(err)
+      //console.log(err)
     });
 });
 
-function agregarUsuario(usuario, uid) {
-  ref.child(uid).update(usuario)
-};
-
-//Push
-btnPush.addEventListener("click", function () {
-  //Ejemplo 01
-  var objeto = {
-    nombre: "firebase",
-    profesor: "Juan",
-    contenido: {
-      primero: "Autenticación",
-      segundo: "Database"
-    }
-  }
-  refTest.push(objeto).then(function () {
-    alert("Exito al subir los datos")
-  }).catch(function (err) {
-    console.log(err)
-    alert("Error")
-  })
-});
-
-//Update
-btnUpdate.addEventListener("click", function () {
+function leerInformacion(uid) {
   /*
-  //Ejemplo 01
+  //.once sólo llama una vez
+  ref.child("zJ7Vj88JpuVLzttDAsa2wPFj6h02").once("value",function(data){
+    console.log(data.val())
+    llenarInformación(data.val().nombre, data.val().email)
+  });
+  */
+
+  //.on Mantiene comunicación con la base de datos
+  ref.child(uid).on('value', function (data) {
+    llenarInformación(data.val())
+  });
+}
+
+function llenarInformación(perfil) {
+  perfilNombre.innerHTML = perfil.nombre
+  perfilEmail.innerHTML = perfil.email
+  perfilTelefono.innerHTML = perfil.telefono
+  perfilDireccion.innerHTML = perfil.direccion.calle+" "+perfil.direccion.interior+" "+  perfil.direccion.codigoPostal+" "+perfil.direccion.colonia
+  usuario = perfil
+}
+
+perfilEditar.addEventListener("click", function(){
+  datosPerfil.style.display = "none"
+  formularioPerfil.style.display = "block"
+  nombreForm.value = usuario.nombre
+  emailForm.value = usuario.email
+  telefonoForm.value = usuario.telefono
+  calleForm.value = usuario.direccion.calle
+  interiorForm.value = usuario.direccion.interior
+  cpForm.value = usuario.direccion.codigoPostal
+  coloniaForm.value = usuario.direccion.colonia
+  
+})
+
+cancelForm.addEventListener("click", function(){
+  limpiarFormulario()
+})
+
+function limpiarFormulario(){
+  form.reset()
+  formularioPerfil.style.display = "none"
+  datosPerfil.style.display = "block"
+}
+
+function editarDatos(){
+  event.preventDefault()
   var objeto = {
-    nombre: "Android",
-    profesor: "Ann",
-    contenido: {
-      primero:"Layouts",
-      segundo:"Java code"
+    nombre : nombreForm.value, 
+    email : emailForm.value,
+    telefono : telefonoForm.value,
+    direccion:{
+      calle : calleForm.value,
+      interior : interiorForm.value,
+      colonia : coloniaForm.value,
+      codigoPostal : cpForm.value
     }
   }
-  refTest.child("-LFNM56fGlXmkn3Qm5Gp").update(objeto).then(function(){
-    alert("Exito al actualizar los datos")
-  }).catch(function(err){
-    console.log(err)
-    alert("Error")
-  })
-  */
-  //Ejemplo 01
-  var objeto = {
-    modo: "Virtual"
-  }
-  refTest.update(objeto).then(function () {
-    alert("Exito al actualizar los datos")
-  }).catch(function (err) {
-    console.log(err)
-    alert("Error")
-  })
-});
-
-//Set
-btnSet.addEventListener("click", function () {
-  /*
-  //Ejemplo 01
-  var objeto = {
-    nombre: "Android",
-    profesor: "Ann",
-    contenido: {
-      primero: "Layouts",
-      segundo: "Java code"
-    }
-  }
-  refTest.set(objeto).then(function () {
-    alert("Exito al setear los datos")
-  }).catch(function (err) {
-    console.log(err)
-    alert("Error")
-  })
-  */
-  //Ejemplo 02
-  var objeto = {
-    Lugar: "Peru"
-  }
-  refTest.set(objeto).then(function () {
-    alert("Exito al setear los datos")
-  }).catch(function (err) {
-    console.log(err)
-    alert("Error")
-  })
-
-});
-
-//Remove
-btnRemove.addEventListener("click", function () {
-  //Ejemplo 01
-  ref.child("-LFMs6lRRnHJgu_33oKR").remove().then(function () {
-    alert("Exito al remover los datos")
-  }).catch(function (err) {
-    console.log(err)
-    alert("Error")
-  })
-});
+  ref.child(loginUser.uid).set(objeto)
+  limpiarFormulario()
+}

@@ -24,45 +24,36 @@
         <!-- menu -->
         <ul>
           <li>
-            <a href="index.html">Home</a>
-          </li>
-          <li>
             <a href="" id="btnLogin">Iniciar Sesion</a>
           </li>
           <li>
-            <a href="" id="btnLogout">Cerrar Sesion</a>
+            <a href="" id="btnLogout" style="display: none;">Cerrar Sesion</a>
           </li>
         </ul>
       </nav>
     </div>
   </header>
-  <div style="text-align: center; background-image: url('assets/background2x.png')">
-    <button id="btnPush" class="button">Push</button>
-    <button id="btnUpdate" class="button">Update</button>
-    <button id="btnSet" class="button">Set</button>
-    <button id="btnRemove" class="button">Remove</button>
-  </div>
-  <!--
+  
   <section class="tabla datosPerfil" id="datosPerfil">
     <div class="contenedor">
       <h1>Tu Perfil</h1>
-      <label for="perfilNombre">Nombre</label>
+      <label for="perfilNombre">Nombre: </label>
       <h3 id="perfilNombre"></h3>
-      <label for="perfilEmail">Email</label>
+      <label for="perfilEmail">Email: </label>
       <h3 id="perfilEmail"></h3>
-      <label for="perfilTelefono">Teléfono</label>
+      <label for="perfilTelefono">Teléfono: </label>
       <h3 id="perfilTelefono"></h3>
-      <label for="perfilDireccion">Direccion</label>
+      <label for="perfilDireccion">Direccion: </label>
       <h3 id="perfilDireccion"></h3>
-      <button id="perfilEditar">Editar</button>
+      <button id="perfilEditar">Editar: </button>
     </div>
   </section>
-  -->
+  
   <section class="formularioPerfil" onsubmit="editarDatos()" id="formularioPerfil" style="display:none">
 
     <div class="contenedor">
       <h2>Edita tu información</h2>
-      <form action="-.html" name="formPerfil">
+      <form action="-.html" name="formPerfil" id="form">
         <div>
           <label for="nombreForm">Nombre:</label>
           <input type="text" id="nombreForm" required="">
